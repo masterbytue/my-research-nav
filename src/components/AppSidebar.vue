@@ -17,8 +17,8 @@ const emit = defineEmits<{
 <template>
   <aside class="sidebar" aria-label="页面导航">
     <button class="brand" type="button" aria-label="返回顶部" @click="emit('navigate', 'top')">
-      <span class="brand-mark">研</span>
-      <span class="brand-copy"><strong>研途</strong><small>RESEARCH DESK</small></span>
+      <span class="brand-mark">砺</span>
+      <span class="brand-copy"><strong>研途</strong><small>砺文工作室出品</small></span>
     </button>
 
     <nav class="section-nav" aria-label="资源分类">

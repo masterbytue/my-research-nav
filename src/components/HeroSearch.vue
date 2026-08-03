@@ -22,10 +22,10 @@ defineExpose({ focus: () => input.value?.focus() })
 <template>
   <header id="top" class="hero">
     <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-eyebrow"><span>科研资源索引</span><span>VOL. 01 / 2026</span></div>
+    <div class="hero-eyebrow"><span>砺文工作室 · 科研资源索引</span><span>VOL. 01 / 2026</span></div>
 
     <div class="hero-copy">
-      <p class="edition">A CURATED DESK FOR RESEARCHERS</p>
+      <p class="edition">A LIWEN STUDIO RESEARCH DESK</p>
       <h1>把研究的路，<br /><em>走得更清楚。</em></h1>
       <p class="hero-intro">检索、阅读、写作与分析——{{ resourceCount }} 个可靠入口，按真实科研流程重新编排。</p>
     </div>
@@ -59,8 +59,8 @@ defineExpose({ focus: () => input.value?.focus() })
     </div>
 
     <div class="hero-note" aria-label="本站特点">
-      <span>CURATED</span>
-      <strong>人工整理</strong>
+      <span>LIWEN STUDIO</span>
+      <strong>砺文工作室出品</strong>
       <i></i>
       <span>LOCAL FIRST</span>
       <strong>偏好仅存本机</strong>

@@ -13,6 +13,7 @@ describe('App', () => {
     expect(wrapper.get('h1').text()).toContain('把研究的路')
     expect(wrapper.text()).toContain('文献检索')
     expect(wrapper.text()).toContain('Zotero')
+    expect(wrapper.text()).toContain('关于砺文工作室')
   })
 
   it('filters resources by name, description, and tag', async () => {

@@ -150,9 +150,19 @@ onBeforeUnmount(() => {
           <button type="button" @click="query = ''">查看全部资源</button>
         </div>
 
+        <section class="studio-section" aria-labelledby="studio-title">
+          <div class="studio-seal" aria-hidden="true"><span>砺文</span><small>LIWEN</small></div>
+          <div class="studio-copy">
+            <span class="studio-kicker">THE STUDIO BEHIND THIS DESK</span>
+            <h2 id="studio-title">关于砺文工作室</h2>
+            <p>我们相信，好的科研工具应当减少寻找的时间，让研究者把精力留给阅读、思考与表达。研途由砺文工作室设计并持续维护。</p>
+          </div>
+          <blockquote>“砺思求真，文以载道。”</blockquote>
+        </section>
+
         <footer class="site-footer">
-          <div><span class="footer-mark">研</span><p><strong>研途 · 科研工作台</strong><br />为更少的寻找，和更多的思考。</p></div>
-          <div class="footer-meta"><span>CURATED BY ZHENXIANG XIA</span><a href="mailto:946883902@qq.com">反馈资源 ↗</a></div>
+          <div><span class="footer-mark">砺</span><p><strong>砺文工作室 · 研途</strong><br />为更少的寻找，和更多的思考。</p></div>
+          <div class="footer-meta"><span>DESIGNED & CURATED BY LIWEN STUDIO</span><a href="mailto:946883902@qq.com">反馈资源 ↗</a></div>
         </footer>
       </div>
     </main>
