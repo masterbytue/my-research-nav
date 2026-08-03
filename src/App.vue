@@ -53,12 +53,22 @@ function onKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && query.value) query.value = ''
 }
 
-function onScroll() {
+let scrollFrame: number | null = null
+
+function updateActiveSection() {
   const marker = window.scrollY + 180
   for (const category of categories) {
     const section = document.getElementById(category.id)
     if (section && section.offsetTop <= marker) activeId.value = category.id
   }
+}
+
+function onScroll() {
+  if (scrollFrame !== null) return
+  scrollFrame = window.requestAnimationFrame(() => {
+    scrollFrame = null
+    updateActiveSection()
+  })
 }
 
 onMounted(() => {
@@ -68,6 +78,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKeydown)
   window.removeEventListener('scroll', onScroll)
+  if (scrollFrame !== null) window.cancelAnimationFrame(scrollFrame)
 })
 </script>
 

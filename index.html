@@ -4,7 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#173f35" />
+    <meta name="theme-color" content="#153650" />
+    <script>
+      ;(() => {
+        try {
+          const stored = window.localStorage.getItem('research-nav:theme')
+          const theme = stored ? JSON.parse(stored) : 'light'
+          const resolved = theme === 'dark' ? 'dark' : 'light'
+          document.documentElement.dataset.theme = resolved
+          document.querySelector('meta[name="theme-color"]').content =
+            resolved === 'dark' ? '#171b20' : '#153650'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <meta name="description" content="砺文工作室出品：面向科研工作者的一站式学术资源、AI 助手与效率工具导航。" />
     <meta property="og:title" content="砺文工作室 · 研途科研工作台" />
     <meta property="og:description" content="把检索、阅读、写作与分析工具收进一张科研桌面。砺文工作室设计并维护。" />

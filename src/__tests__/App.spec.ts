@@ -6,6 +6,7 @@ describe('App', () => {
   beforeEach(() => {
     window.localStorage.clear()
     document.documentElement.removeAttribute('data-theme')
+    document.querySelector('meta[name="theme-color"]')?.remove()
   })
 
   it('renders the research workspace and resource catalogue', () => {
@@ -46,5 +47,48 @@ describe('App', () => {
       '_blank',
       'noopener,noreferrer',
     )
+  })
+
+  it('switches theme and keeps browser chrome in sync', async () => {
+    const themeColor = document.createElement('meta')
+    themeColor.name = 'theme-color'
+    themeColor.content = '#153650'
+    document.head.append(themeColor)
+
+    const wrapper = mount(App)
+    await wrapper.get('[aria-label="切换到夜间主题"]').trigger('click')
+
+    expect(document.documentElement.dataset.theme).toBe('dark')
+    expect(themeColor.content).toBe('#171b20')
+    expect(window.localStorage.getItem('research-nav:theme')).toBe('"dark"')
+  })
+
+  it('records a visited resource and shows it on the personal shelf', async () => {
+    const wrapper = mount(App)
+    const zoteroCard = wrapper.findAll('.resource-card').find((card) => card.text().includes('Zotero'))
+    expect(zoteroCard).toBeDefined()
+
+    await zoteroCard!.get('a').trigger('click')
+
+    expect(wrapper.text()).toContain('最近访问')
+    expect(window.localStorage.getItem('research-nav:recents')).toBe('["zotero"]')
+  })
+
+  it('focuses search with slash, clears with Escape, and renders the empty state', async () => {
+    const wrapper = mount(App, { attachTo: document.body })
+    const input = wrapper.get<HTMLInputElement>('input[type="search"]')
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: '/' }))
+    expect(document.activeElement).toBe(input.element)
+
+    await input.setValue('不存在的学术资源xyz')
+    expect(wrapper.text()).toContain('暂时没有匹配项')
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))
+    await wrapper.vm.$nextTick()
+    expect(input.element.value).toBe('')
+    expect(wrapper.text()).not.toContain('暂时没有匹配项')
+
+    wrapper.unmount()
   })
 })

@@ -55,6 +55,8 @@ src/
 
 合并到 `main` 后，GitHub Actions 会自动执行检查并构建 GitHub Pages。首次使用时，请在仓库 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**。
 
+若使用 Cloudflare Pages，请将生产分支设为 `main`，构建命令设为 `npm run build`，输出目录设为 `dist`。项目根目录的 `.nvmrc` 会将构建环境固定在 Node.js 22.16.0，避免旧版 Pages 构建镜像使用不兼容的 Node.js 版本。
+
 ## 反馈
 
 发现失效链接或希望推荐资源，可通过站点底部的反馈入口联系维护者。

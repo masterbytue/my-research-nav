@@ -16,7 +16,8 @@ function readStored<T>(key: string, fallback: T): T {
 export function useWorkspace() {
   const favoriteIds = ref<string[]>(readStored(FAVORITES_KEY, []))
   const recentIds = ref<string[]>(readStored(RECENTS_KEY, []))
-  const theme = ref<'light' | 'dark'>(readStored(THEME_KEY, 'light'))
+  const initialTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
+  const theme = ref<'light' | 'dark'>(readStored(THEME_KEY, initialTheme))
 
   const favoriteSet = computed(() => new Set(favoriteIds.value))
 
@@ -41,6 +42,10 @@ export function useWorkspace() {
     (value) => {
       window.localStorage.setItem(THEME_KEY, JSON.stringify(value))
       document.documentElement.dataset.theme = value
+      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute(
+        'content',
+        value === 'dark' ? '#171b20' : '#153650',
+      )
     },
     { immediate: true },
   )
