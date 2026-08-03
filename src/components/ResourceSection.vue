@@ -18,9 +18,10 @@ const emit = defineEmits<{ toggleFavorite: [id: string]; visit: [id: string] }>(
     </header>
     <div class="resource-grid">
       <ResourceCard
-        v-for="resource in category.resources"
+        v-for="(resource, index) in category.resources"
         :key="resource.id"
         :resource="resource"
+        :order="index"
         :favorite="favoriteIds.has(resource.id)"
         @toggle-favorite="emit('toggleFavorite', $event)"
         @visit="emit('visit', $event)"

@@ -21,17 +21,18 @@ defineExpose({ focus: () => input.value?.focus() })
 
 <template>
   <header id="top" class="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-eyebrow"><span>砺文工作室 · 科研资源索引</span><span>VOL. 01 / 2026</span></div>
+    <div class="hero-ornament" aria-hidden="true"><span>研</span></div>
+    <div class="hero-eyebrow"><span>LIWEN STUDIO ACADEMIC SERVICES</span><span>EST. 2026</span></div>
 
     <div class="hero-copy">
-      <p class="edition">A LIWEN STUDIO RESEARCH DESK</p>
-      <h1>把研究的路，<br /><em>走得更清楚。</em></h1>
-      <p class="hero-intro">检索、阅读、写作与分析——{{ resourceCount }} 个可靠入口，按真实科研流程重新编排。</p>
+      <p class="edition">砺文工作室 · 学术资源索引</p>
+      <h1>研途学术资源导航</h1>
+      <p class="english-title">RESEARCH RESOURCE GATEWAY</p>
+      <p class="hero-intro">为研究者编目可靠的检索、阅读、写作与分析工具。目前收录 {{ resourceCount }} 项资源。</p>
     </div>
 
     <div class="search-panel" role="search">
-      <div class="search-label"><span>01</span><strong>站内筛选 / 学术搜索</strong><kbd>/</kbd></div>
+      <div class="search-label"><span>统一检索</span><strong>RESOURCE DISCOVERY</strong><kbd>/</kbd></div>
       <div class="search-row">
         <label class="engine-select">
           <span class="sr-only">搜索引擎</span>
@@ -52,18 +53,16 @@ defineExpose({ focus: () => input.value?.focus() })
           />
         </label>
         <button type="button" class="submit-search" :disabled="!modelValue.trim()" @click="emit('search')">
-          外部检索 <span aria-hidden="true">↗</span>
+          开始检索 <span aria-hidden="true">→</span>
         </button>
       </div>
-      <p>输入时自动筛选本站资源，按回车则使用所选学术引擎检索。</p>
+      <p><span>检索说明</span> 输入关键词可即时筛选本馆资源；按回车将使用所选数据库进行外部检索。</p>
     </div>
 
-    <div class="hero-note" aria-label="本站特点">
-      <span>LIWEN STUDIO</span>
-      <strong>砺文工作室出品</strong>
-      <i></i>
-      <span>LOCAL FIRST</span>
-      <strong>偏好仅存本机</strong>
+    <div class="hero-note" aria-label="平台信息">
+      <div><strong>07</strong><span>学术主题</span></div>
+      <div><strong>{{ resourceCount }}</strong><span>精选资源</span></div>
+      <div><strong>LOCAL</strong><span>隐私优先</span></div>
     </div>
   </header>
 </template>

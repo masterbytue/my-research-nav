@@ -94,15 +94,6 @@ onBeforeUnmount(() => {
         @search="externalSearch"
       />
 
-      <nav class="mobile-categories" aria-label="移动端资源分类">
-        <button v-for="category in categories" :key="category.id" type="button" @click="navigateTo(category.id)">
-          {{ category.label }}
-        </button>
-        <button class="mobile-theme" type="button" @click="toggleTheme">
-          {{ theme === 'light' ? '◐ 夜间' : '☼ 日间' }}
-        </button>
-      </nav>
-
       <div class="desk-content">
         <section v-if="!normalizedQuery && (favoriteResources.length || recentResources.length)" class="personal-shelf">
           <div v-if="favoriteResources.length" class="shelf-block">
@@ -113,6 +104,7 @@ onBeforeUnmount(() => {
                 :key="resource.id"
                 :resource="resource"
                 :favorite="true"
+                :order="0"
                 @toggle-favorite="toggleFavorite"
                 @visit="recordVisit"
               />
@@ -151,13 +143,13 @@ onBeforeUnmount(() => {
         </div>
 
         <section class="studio-section" aria-labelledby="studio-title">
-          <div class="studio-seal" aria-hidden="true"><span>砺文</span><small>LIWEN</small></div>
+          <div class="studio-seal" aria-hidden="true"><span>砺文</span><small>LIWEN STUDIO</small></div>
           <div class="studio-copy">
-            <span class="studio-kicker">THE STUDIO BEHIND THIS DESK</span>
-            <h2 id="studio-title">关于砺文工作室</h2>
+            <span class="studio-kicker">PUBLISHER'S NOTE · 出品方说明</span>
+            <h2 id="studio-title">砺文工作室</h2>
             <p>我们相信，好的科研工具应当减少寻找的时间，让研究者把精力留给阅读、思考与表达。研途由砺文工作室设计并持续维护。</p>
           </div>
-          <blockquote>“砺思求真，文以载道。”</blockquote>
+          <blockquote><span>工作室理念</span>砺思求真，文以载道。</blockquote>
         </section>
 
         <footer class="site-footer">

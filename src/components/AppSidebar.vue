@@ -15,13 +15,16 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <aside class="sidebar" aria-label="页面导航">
-    <button class="brand" type="button" aria-label="返回顶部" @click="emit('navigate', 'top')">
-      <span class="brand-mark">砺</span>
-      <span class="brand-copy"><strong>研途</strong><small>砺文工作室出品</small></span>
-    </button>
+  <header class="sidebar" aria-label="网站导航">
+    <div class="header-branding">
+      <button class="brand" type="button" aria-label="返回顶部" @click="emit('navigate', 'top')">
+        <span class="brand-mark">砺文</span>
+        <span class="brand-copy"><strong>砺文工作室</strong><small>LIWEN STUDIO</small></span>
+      </button>
+      <div class="product-name"><strong>研途</strong><span>学术资源导航平台</span></div>
+    </div>
 
-    <nav class="section-nav" aria-label="资源分类">
+    <nav class="section-nav" aria-label="资源分类目录">
       <button
         v-for="category in categories"
         :key="category.id"
@@ -35,11 +38,16 @@ const emit = defineEmits<{
     </nav>
 
     <div class="sidebar-foot">
-      <div class="saved-count"><span>已收藏</span><strong>{{ favoriteCount }}</strong></div>
-      <button class="theme-button" type="button" @click="emit('toggleTheme')">
+      <div class="saved-count"><span>收藏</span><strong>{{ favoriteCount }}</strong></div>
+      <button
+        class="theme-button"
+        type="button"
+        :aria-label="theme === 'light' ? '切换到夜间主题' : '切换到日间主题'"
+        @click="emit('toggleTheme')"
+      >
         <span aria-hidden="true">{{ theme === 'light' ? '◐' : '☼' }}</span>
-        {{ theme === 'light' ? '夜间阅读' : '日间阅读' }}
+        <span class="theme-label">{{ theme === 'light' ? '夜间' : '日间' }}</span>
       </button>
     </div>
-  </aside>
+  </header>
 </template>

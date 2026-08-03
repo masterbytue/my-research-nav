@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Resource } from '@/types/navigation'
 
-defineProps<{ resource: Resource; favorite: boolean }>()
+defineProps<{ resource: Resource; favorite: boolean; order: number }>()
 const emit = defineEmits<{ toggleFavorite: [id: string]; visit: [id: string] }>()
 </script>
 
@@ -14,15 +14,16 @@ const emit = defineEmits<{ toggleFavorite: [id: string]; visit: [id: string] }>(
       :aria-label="`打开 ${resource.name}（新窗口）`"
       @click="emit('visit', resource.id)"
     >
-      <div class="resource-monogram" :style="{ '--resource-accent': resource.accent }">
-        {{ resource.name.slice(0, 1).toUpperCase() }}
-      </div>
+      <span class="entry-index">{{ String(order + 1).padStart(2, '0') }}</span>
       <div class="resource-copy">
-        <h3>{{ resource.name }}</h3>
+        <div class="resource-title-row">
+          <h3>{{ resource.name }}</h3>
+          <span v-if="resource.featured" class="recommended">馆员推荐</span>
+        </div>
         <p>{{ resource.description }}</p>
         <div class="resource-tags"><span v-for="tag in resource.tags" :key="tag">{{ tag }}</span></div>
       </div>
-      <span class="open-arrow" aria-hidden="true">↗</span>
+      <span class="open-arrow" aria-hidden="true">访问 ↗</span>
     </a>
     <button
       type="button"
