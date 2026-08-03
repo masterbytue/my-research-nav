@@ -4,20 +4,30 @@ const FAVORITES_KEY = 'research-nav:favorites'
 const RECENTS_KEY = 'research-nav:recents'
 const THEME_KEY = 'research-nav:theme'
 
-function readStored<T>(key: string, fallback: T): T {
+function readStoredArray(key: string): string[] {
   try {
     const value = window.localStorage.getItem(key)
-    return value ? (JSON.parse(value) as T) : fallback
+    const parsed: unknown = value ? JSON.parse(value) : []
+    return Array.isArray(parsed) && parsed.every((item) => typeof item === 'string') ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+function readStoredTheme(fallback: 'light' | 'dark'): 'light' | 'dark' {
+  try {
+    const value: unknown = JSON.parse(window.localStorage.getItem(THEME_KEY) ?? 'null')
+    return value === 'light' || value === 'dark' ? value : fallback
   } catch {
     return fallback
   }
 }
 
 export function useWorkspace() {
-  const favoriteIds = ref<string[]>(readStored(FAVORITES_KEY, []))
-  const recentIds = ref<string[]>(readStored(RECENTS_KEY, []))
+  const favoriteIds = ref<string[]>(readStoredArray(FAVORITES_KEY))
+  const recentIds = ref<string[]>(readStoredArray(RECENTS_KEY))
   const initialTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
-  const theme = ref<'light' | 'dark'>(readStored(THEME_KEY, initialTheme))
+  const theme = ref<'light' | 'dark'>(readStoredTheme(initialTheme))
 
   const favoriteSet = computed(() => new Set(favoriteIds.value))
 
@@ -44,7 +54,7 @@ export function useWorkspace() {
       document.documentElement.dataset.theme = value
       document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute(
         'content',
-        value === 'dark' ? '#171b20' : '#153650',
+        value === 'dark' ? '#111820' : '#113752',
       )
     },
     { immediate: true },

@@ -18,8 +18,8 @@ const emit = defineEmits<{
   <header class="sidebar" aria-label="网站导航">
     <div class="header-branding">
       <button class="brand" type="button" aria-label="返回顶部" @click="emit('navigate', 'top')">
-        <span class="brand-mark">砺文</span>
-        <span class="brand-copy"><strong>砺文工作室</strong><small>LIWEN STUDIO</small></span>
+        <span class="brand-mark">LW</span>
+        <span class="brand-copy"><strong>砺文工作室</strong><small>ACADEMIC SERVICES</small></span>
       </button>
       <div class="product-name"><strong>研途</strong><span>学术资源导航平台</span></div>
     </div>

@@ -52,14 +52,14 @@ describe('App', () => {
   it('switches theme and keeps browser chrome in sync', async () => {
     const themeColor = document.createElement('meta')
     themeColor.name = 'theme-color'
-    themeColor.content = '#153650'
+    themeColor.content = '#113752'
     document.head.append(themeColor)
 
     const wrapper = mount(App)
     await wrapper.get('[aria-label="切换到夜间主题"]').trigger('click')
 
     expect(document.documentElement.dataset.theme).toBe('dark')
-    expect(themeColor.content).toBe('#171b20')
+    expect(themeColor.content).toBe('#111820')
     expect(window.localStorage.getItem('research-nav:theme')).toBe('"dark"')
   })
 
@@ -90,5 +90,16 @@ describe('App', () => {
     expect(wrapper.text()).not.toContain('暂时没有匹配项')
 
     wrapper.unmount()
+  })
+
+  it('ignores stored workspace values with an invalid shape', () => {
+    window.localStorage.setItem('research-nav:favorites', '{}')
+    window.localStorage.setItem('research-nav:recents', '"not-an-array"')
+    window.localStorage.setItem('research-nav:theme', '"sepia"')
+
+    const wrapper = mount(App)
+    expect(wrapper.text()).not.toContain('我的收藏')
+    expect(wrapper.text()).not.toContain('最近访问')
+    expect(document.documentElement.dataset.theme).toBe('light')
   })
 })

@@ -21,18 +21,16 @@ defineExpose({ focus: () => input.value?.focus() })
 
 <template>
   <header id="top" class="hero">
-    <div class="hero-ornament" aria-hidden="true"><span>研</span></div>
-    <div class="hero-eyebrow"><span>LIWEN STUDIO ACADEMIC SERVICES</span><span>EST. 2026</span></div>
+    <div class="hero-eyebrow"><span>砺文工作室 · 科研信息服务</span><span>ACADEMIC RESOURCE PORTAL</span></div>
 
     <div class="hero-copy">
-      <p class="edition">砺文工作室 · 学术资源索引</p>
+      <p class="edition">科研工具与开放资源目录</p>
       <h1>研途学术资源导航</h1>
-      <p class="english-title">RESEARCH RESOURCE GATEWAY</p>
-      <p class="hero-intro">为研究者编目可靠的检索、阅读、写作与分析工具。目前收录 {{ resourceCount }} 项资源。</p>
+      <p class="hero-intro">面向研究人员与高校师生，集中检索文献、阅读管理、学术写作、数据分析及 AI 辅助工具。</p>
     </div>
 
     <div class="search-panel" role="search">
-      <div class="search-label"><span>统一检索</span><strong>RESOURCE DISCOVERY</strong><kbd>/</kbd></div>
+      <div class="search-label"><span>资源统一检索</span><strong>输入名称、用途或关键词</strong><kbd>/</kbd></div>
       <div class="search-row">
         <label class="engine-select">
           <span class="sr-only">搜索引擎</span>
@@ -56,13 +54,13 @@ defineExpose({ focus: () => input.value?.focus() })
           开始检索 <span aria-hidden="true">→</span>
         </button>
       </div>
-      <p><span>检索说明</span> 输入关键词可即时筛选本馆资源；按回车将使用所选数据库进行外部检索。</p>
+      <p><span>使用说明</span> 输入关键词可即时筛选站内资源；按回车将使用所选学术数据库继续检索。</p>
     </div>
 
     <div class="hero-note" aria-label="平台信息">
-      <div><strong>07</strong><span>学术主题</span></div>
-      <div><strong>{{ resourceCount }}</strong><span>精选资源</span></div>
-      <div><strong>LOCAL</strong><span>隐私优先</span></div>
+      <div><strong>07</strong><span>研究环节</span></div>
+      <div><strong>{{ resourceCount }}</strong><span>已收录资源</span></div>
+      <div><strong>本地</strong><span>偏好数据存储</span></div>
     </div>
   </header>
 </template>

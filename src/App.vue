@@ -154,18 +154,21 @@ onBeforeUnmount(() => {
         </div>
 
         <section class="studio-section" aria-labelledby="studio-title">
-          <div class="studio-seal" aria-hidden="true"><span>砺文</span><small>LIWEN STUDIO</small></div>
+          <div class="studio-mark" aria-hidden="true">LW</div>
           <div class="studio-copy">
-            <span class="studio-kicker">PUBLISHER'S NOTE · 出品方说明</span>
-            <h2 id="studio-title">砺文工作室</h2>
-            <p>我们相信，好的科研工具应当减少寻找的时间，让研究者把精力留给阅读、思考与表达。研途由砺文工作室设计并持续维护。</p>
+            <span class="studio-kicker">平台维护信息</span>
+            <h2 id="studio-title">由砺文工作室建设与维护</h2>
+            <p>研途持续整理科研工作流中的常用平台与开放资源，并对分类、链接及使用说明进行维护。</p>
           </div>
-          <blockquote><span>工作室理念</span>砺思求真，文以载道。</blockquote>
+          <dl class="studio-meta">
+            <div><dt>服务对象</dt><dd>研究人员与高校师生</dd></div>
+            <div><dt>更新原则</dt><dd>可靠、清晰、可访问</dd></div>
+          </dl>
         </section>
 
         <footer class="site-footer">
-          <div><span class="footer-mark">砺</span><p><strong>砺文工作室 · 研途</strong><br />为更少的寻找，和更多的思考。</p></div>
-          <div class="footer-meta"><span>DESIGNED & CURATED BY LIWEN STUDIO</span><a href="mailto:946883902@qq.com">反馈资源 ↗</a></div>
+          <div><span class="footer-mark">LW</span><p><strong>砺文工作室 · 研途</strong><br />学术资源导航与科研工具索引</p></div>
+          <div class="footer-meta"><span>LIWEN STUDIO ACADEMIC SERVICES</span><a href="mailto:946883902@qq.com">提交资源或反馈问题</a></div>
         </footer>
       </div>
     </main>
